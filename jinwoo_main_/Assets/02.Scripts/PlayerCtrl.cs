@@ -1,6 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
+//내부 클래스
+//클랙스 직렬화
+//클래스의 경우 변수와 달리 직렬화 해줘야
+//인스펙터에 표시됨
+[System.Serializable]
+public class PlayerAnim
+{
+    public AnimationClip idle;
+    public AnimationClip runF;
+    public AnimationClip runB;
+    public AnimationClip runL;
+    public AnimationClip runR;
+}
+
+
+
 
 public class PlayerCtrl : MonoBehaviour
 {
@@ -20,14 +38,18 @@ public class PlayerCtrl : MonoBehaviour
                     //Public으로 선언된 변수는 Inspector 창에 노출됨.
     public float moveSpeed = 10f;
     public float rotSpeed = 150f;
-    
+
+    public PlayerAnim playerAnim;
+    public Animation anim;
 
     // Start is called before the first frame update
     void Start()
     {
        //트랜스폼 컴포넌트와 tr 변수 연결
         tr = GetComponent<Transform>(); //트랜스폼을 쓰기위해서 컴포넌트에서 협조요청
-
+        anim = GetComponent<Animation>();
+        anim.clip = playerAnim.idle;
+        anim.Play();
     }
 
     // Update is called once per frame
@@ -50,5 +72,29 @@ public class PlayerCtrl : MonoBehaviour
         tr.Rotate(Vector3.up * rotSpeed * Time.deltaTime * r);
         //print(Vector3.Magnitude(Vector3.forward + Vector3.right));
         //print(Vector3.Magnitude((Vector3.forward + Vector3.right).normalized));
+
+        //애니메이션 동작 구분
+        if (v >= 0.1f)//전진 
+        {
+            //CrossFade(애니메이션 이름, 전환 시간)
+            anim.CrossFade(playerAnim.runF.name, 0.3f);
+        }
+        else if (v <= -0.1f)//후진
+        {
+            anim.CrossFade(playerAnim.runB.name, 0.3f);
+        }
+        else if (h >= 0.1f)//오른쪽
+        {
+            anim.CrossFade(playerAnim.runR.name, 0.3f);
+        }
+        else if(h<= -0.1f)//왼쪽
+        {
+            anim.CrossFade(playerAnim.runL.name, 0.3f);
+        }
+        else//정지 시 idle 상태로 전환
+        {
+            anim.CrossFade(playerAnim.idle.name, 0.3f);
+        }            
+        
     }
 }
