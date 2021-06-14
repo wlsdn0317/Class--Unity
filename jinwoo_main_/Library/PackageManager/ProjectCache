@@ -1,6 +1,6 @@
 m_ProjectFiles:
   m_ManifestFileStatus:
-    m_FilePath: "C:/Users/admin/Desktop/\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5/jinwoo_main_21.06.07/Packages/manifest.json"
+    m_FilePath: "C:/Users/admin/Desktop/\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5/jinwoo_main_21.06.09/Packages/manifest.json"
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
@@ -8,7 +8,7 @@ m_ProjectFiles:
       ticks: 637587125250608825
     m_Hash: 1737319810
   m_LockFileStatus:
-    m_FilePath: "C:/Users/admin/Desktop/\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5/jinwoo_main_21.06.07/Packages/packages-lock.json"
+    m_FilePath: "C:/Users/admin/Desktop/\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5/jinwoo_main_21.06.09/Packages/packages-lock.json"
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
@@ -25,7 +25,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.5.7
       source: 1
-      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.07\\Library\\PackageCache\\com.unity.collab-proxy@1.5.7"
+      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.09\\Library\\PackageCache\\com.unity.collab-proxy@1.5.7"
       assetPath: Packages/com.unity.collab-proxy
       name: com.unity.collab-proxy
       displayName: Version Control
@@ -127,7 +127,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 2.0.7
       source: 1
-      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.07\\Library\\PackageCache\\com.unity.ide.rider@2.0.7"
+      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.09\\Library\\PackageCache\\com.unity.ide.rider@2.0.7"
       assetPath: Packages/com.unity.ide.rider
       name: com.unity.ide.rider
       displayName: JetBrains Rider Editor
@@ -234,7 +234,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 2.0.9
       source: 1
-      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.07\\Library\\PackageCache\\com.unity.ide.visualstudio@2.0.9"
+      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.09\\Library\\PackageCache\\com.unity.ide.visualstudio@2.0.9"
       assetPath: Packages/com.unity.ide.visualstudio
       name: com.unity.ide.visualstudio
       displayName: Visual Studio Editor
@@ -319,7 +319,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.2.3
       source: 1
-      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.07\\Library\\PackageCache\\com.unity.ide.vscode@1.2.3"
+      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.09\\Library\\PackageCache\\com.unity.ide.vscode@1.2.3"
       assetPath: Packages/com.unity.ide.vscode
       name: com.unity.ide.vscode
       displayName: Visual Studio Code Editor
@@ -388,7 +388,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 3.1.1
       source: 1
-      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.07\\Library\\PackageCache\\com.unity.postprocessing@3.1.1"
+      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.09\\Library\\PackageCache\\com.unity.postprocessing@3.1.1"
       assetPath: Packages/com.unity.postprocessing
       name: com.unity.postprocessing
       displayName: Post Processing
@@ -477,7 +477,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.1.26
       source: 1
-      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.07\\Library\\PackageCache\\com.unity.test-framework@1.1.26"
+      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.09\\Library\\PackageCache\\com.unity.test-framework@1.1.26"
       assetPath: Packages/com.unity.test-framework
       name: com.unity.test-framework
       displayName: Test Framework
@@ -567,7 +567,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 3.0.6
       source: 1
-      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.07\\Library\\PackageCache\\com.unity.textmeshpro@3.0.6"
+      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.09\\Library\\PackageCache\\com.unity.textmeshpro@3.0.6"
       assetPath: Packages/com.unity.textmeshpro
       name: com.unity.textmeshpro
       displayName: TextMeshPro
@@ -722,7 +722,7 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.4.8
       source: 1
-      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.07\\Library\\PackageCache\\com.unity.timeline@1.4.8"
+      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.09\\Library\\PackageCache\\com.unity.timeline@1.4.8"
       assetPath: Packages/com.unity.timeline
       name: com.unity.timeline
       displayName: Timeline
@@ -2673,7 +2673,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 1.0.6
       source: 1
-      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.07\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6"
+      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.09\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6"
       assetPath: Packages/com.unity.ext.nunit
       name: com.unity.ext.nunit
       displayName: Custom NUnit
@@ -2734,7 +2734,7 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 2.0.0
       source: 1
-      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.07\\Library\\PackageCache\\com.unity.nuget.newtonsoft-json@2.0.0"
+      resolvedPath: "C:\\Users\\admin\\Desktop\\\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5\\jinwoo_main_21.06.09\\Library\\PackageCache\\com.unity.nuget.newtonsoft-json@2.0.0"
       assetPath: Packages/com.unity.nuget.newtonsoft-json
       name: com.unity.nuget.newtonsoft-json
       displayName: Newtonsoft Json
@@ -2805,5 +2805,5 @@ m_PackageAssets:
         path: 
   m_LocalPackages:
     m_LocalFileStatus: []
-m_ProjectPath: "C:/Users/admin/Desktop/\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5/jinwoo_main_21.06.07/Packages"
+m_ProjectPath: "C:/Users/admin/Desktop/\uBBFC\uC9C4\uC6B0unity\uC218\uC5C5/jinwoo_main_21.06.09/Packages"
 m_EditorVersion: 2020.3.10f1 (297d780c91bc)

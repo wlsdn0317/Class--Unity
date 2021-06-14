@@ -16,6 +16,9 @@ public class BarrelCtrl : MonoBehaviour
 
     public float expRadius = 10f; //폭발 반경
 
+    AudioSource _audio;
+    public AudioClip expSfx;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +27,8 @@ public class BarrelCtrl : MonoBehaviour
         _renderer = GetComponent<MeshRenderer>();
         int idx = Random.Range(0, texures.Length);
         _renderer.material.mainTexture = texures[idx];
+
+        _audio = GetComponent<AudioSource>();
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -52,6 +57,8 @@ public class BarrelCtrl : MonoBehaviour
         int idx = Random.Range(0, meshes.Length);
         //뽑은 인덱스에 해당하는 메쉬를 선택해서 메쉬필터에 적용
         meshFilter.sharedMesh = meshes[idx];
+
+        _audio.PlayOneShot(expSfx, 1f);
     }
 
     void IndirectDamage(Vector3 pos)
