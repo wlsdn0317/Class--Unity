@@ -36,4 +36,16 @@ public class FollowCam : MonoBehaviour
 
 
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        //DrawWireSphere(위치,지름)
+        //선으로 이루어진 구형의 모양을 그림(씬뷰에만 표시됨,.디버그용)
+        Gizmos.DrawWireSphere(target.position + (target.up * targetOffset), 0.1f);
+        //메인 카메라와 추적 지점 사이에 선을 그림
+        //DrawLine(출발시점, 도착지점)
+        //출발과 도착지점 사이에 선을 그림
+        Gizmos.DrawLine(target.position + (target.up * targetOffset), transform.position);
+    }
 }

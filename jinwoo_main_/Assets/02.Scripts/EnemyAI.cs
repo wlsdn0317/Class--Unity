@@ -29,6 +29,12 @@ public class EnemyAI : MonoBehaviour
     Animator animator;
     readonly int hashMove = Animator.StringToHash("IsMove");
     readonly int hashSpeed = Animator.StringToHash("Speed");
+    readonly int hashDie = Animator.StringToHash("Die");
+    readonly int hashDieidx = Animator.StringToHash("Dieidx");
+    readonly int hashOffset = Animator.StringToHash("Offset");
+    readonly int hashWalkSpeed = Animator.StringToHash("WalkSpeed");
+    readonly int hashPlayerDie = Animator.StringToHash("PlayerDie");
+
 
     // Start is called before the first frame update
     void Awake()
@@ -50,6 +56,10 @@ public class EnemyAI : MonoBehaviour
         //시간 지연 변수는 코루틴 함수에서 사용됨.
         ws = new WaitForSeconds(0.3f);
 
+        //Offset과 Speed값을 이용해서 애니메이션 동작을 다양하게 구성
+        //속도도 조금씩 다르게 만들어줌
+        animator.SetFloat(hashOffset, Random.Range(0f, 1f));
+        animator.SetFloat(hashWalkSpeed, Random.Range(1f, 1.2f));
 
     }
 
@@ -61,6 +71,16 @@ public class EnemyAI : MonoBehaviour
         //상태 변화에 다라 행동을 지시하는 코루틴 함수 호출
         StartCoroutine(Action());
 
+        //Damage 스크립트의 OnPlayerDieEvent 이벤트에
+        //EnemyAI 스크립트의 OnPlayerDie함수를 연결시켜줌
+        Damage.OnPlayerDieEvent += this.OnPlayerDie;
+    }
+
+    private void OnDisable()
+    {
+        //스크립트가 비활성화 될 때에는
+        //이벤트와 연결된 함수 연결 해제
+        Damage.OnPlayerDieEvent -= this.OnPlayerDie;
     }
 
     IEnumerator CheckState() //상태체크 코루틴 함수
@@ -116,7 +136,16 @@ public class EnemyAI : MonoBehaviour
                         enemyFire.isFire = true;
                     break;
                 case State.DIE:
+                    isDie = true;
+                    enemyFire.isFire = false;
+
                     moveAgent.Stop();
+                    //랜덤 값에 의해서 애니메이션 3개중에 1개 랜덤하게 실행
+                    animator.SetInteger(hashDieidx, Random.Range(0, 3));
+                    animator.SetTrigger(hashDie);
+
+                    //사망후 남아있는 콜라이더 비활성화 해서 계속 충동하지 않도록
+                    GetComponent<CapsuleCollider>().enabled = false;
                     break; 
             }
 
@@ -135,4 +164,16 @@ public class EnemyAI : MonoBehaviour
         //(해쉬값 / 파라메터이름, 전달하고자 하는값)형태로 사용됨
         animator.SetFloat(hashSpeed, moveAgent.speed);
     }
+
+    public void OnPlayerDie()
+    {
+        moveAgent.Stop(); //적 움직임 멈춤
+        enemyFire.isFire = false; //적 공격 멈춤
+        //모든 코루틴 함수 종료
+        //유한상태 머신 정지 해야됨
+        StopAllCoroutines();
+
+        animator.SetTrigger(hashPlayerDie);
+    }
+
 }

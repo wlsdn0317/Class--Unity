@@ -37,11 +37,14 @@ public class FireCtrl : MonoBehaviour
     AudioSource _audio;
     public PlayerSfx playerSfx;//오디오 클립 저장 변수
 
+    Shake shake;
+
     // Start is called before the first frame update
     void Start()
     {
         muzzleFlash = firePos.GetComponentInChildren<ParticleSystem>();
         _audio = GetComponent<AudioSource>();
+        shake = GameObject.Find("CameraRig").GetComponent<Shake>();
     }
     //
     // Update is called once per frame
@@ -58,6 +61,11 @@ public class FireCtrl : MonoBehaviour
 
     void Fire()
     {
+        //shake 스크립트 내부의 ShakeCamera 코루틴 함수 호출
+        //매개변수 값을 생략했으므로 ShakeCamera 함수에 설정된
+        //기본값으로 동작함
+        StartCoroutine(shake.ShakeCamera());
+
         //Instantiate(동적생성할 오브젝트, 위치, 방향);
         //사용되지 않는 객체(Object)를 활성화 해주는 함수
         Instantiate(bullet, firePos.position, firePos.rotation);

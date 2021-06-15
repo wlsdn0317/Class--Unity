@@ -100,6 +100,10 @@ public class MoveAgent : MonoBehaviour
             //리스트에 들어가 있는 요소들 중에서
             //지정된 인덱스의 오브젝트 삭제
             wayPoints.RemoveAt(0);
+
+            //하이어라키에 생성한 Point들의 갯수들 중에서
+            //랜덤한 위치를 하나 뽑아옴
+            nextIdx = Random.Range(0, wayPoints.Count);
         }
 
 
@@ -170,7 +174,7 @@ public class MoveAgent : MonoBehaviour
         if (agent.velocity.sqrMagnitude>= 0.2f*0.2f
             && agent.remainingDistance <= 0.5f)
         {
-            nextIdx++;
+            //nextIdx++;
             //0 1 2 3 4 5 6........ wayPoints 를 10이라고 가정
             //0 % 10 = 0
             //1 % 10 = 1
@@ -178,7 +182,12 @@ public class MoveAgent : MonoBehaviour
             //순환구조를 이루기 위하여 나머지연산을함
             //처음부터 마지막 순찰지 돌고나면 다시 처음으로
             //돌아가도록 인덱스 변경
-            nextIdx = nextIdx % wayPoints.Count;
+            //nextIdx = nextIdx % wayPoints.Count;
+            //윗쪽코드는 순찰 지점을 순차적으로 순환하도록 했으므로 주석처리함
+
+            nextIdx = Random.Range(0, wayPoints.Count);
+
+
             //인덱스 변경후 이동시작 하기 위해 함수 호출
             MoveWayPoint();
         }
