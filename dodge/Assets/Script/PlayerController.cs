@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody playerRigidbody; //이동에 사용할 리지드바디 컴포넌트
-    public float speed = 8f; //이동속력
+    public float speed = 10f; //이동속력
     //변수명 앞에 public이 붙으면
     //유니티 에디터에서 해당 변수를 직접 눈으로 확인하고
     //수정할 수 있게 된다.
@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
     //[SerializeField]라는 명령어를 통해서
     //에디터에서는 보이지만 변수는 여전히 private으로
     //남도록 만들 수 있다.
+
+    public int hp = 3;//플레이어의 체력수치
+
+
     void Start()
     {
         //클래스의 생성자와 동일한 역할을 하는 함수
@@ -237,11 +241,20 @@ public class PlayerController : MonoBehaviour
 
     //키보드 입력에 다중대응하는 방법
     void moveAxis()
-    {
-        Vector3 dir = new Vector3(Input.GetAxis("Horizontal")*speed,
-                                        0,
-                                        Input.GetAxis("Vertical")*speed);
+    {         
+        Vector3 dir = new Vector3(Input.GetAxis("Horizontal") * speed,
+                                            0,
+                                            Input.GetAxis("Vertical") * speed);
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            speed = 20f;
 
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed = 10f;
+
+        }
         //개발자 입장에서 특정 입력이 어떤 동작인지
         //키보드 값이나 입력된 값만 봐서는 이해하기 힘들기 때문에
         //특정 입력에 대해 별도로 이름을 붙여서
@@ -254,7 +267,7 @@ public class PlayerController : MonoBehaviour
 
     
     //총알에 부딪혔을때 플레이어를 소멸(비활성화)시키는 함수
-    void die()
+    public void die()
     {
 
         gameObject.SetActive(false);
@@ -264,17 +277,5 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
-    {//bullet2번과 충돌시(isTrigger)
-        if (other.gameObject.tag == "Bullet")
-            die();
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {//bullet1번과 충돌시
-        if (collision.gameObject.tag == "Bullet")
-        {
-            die();
-        }
-    }
+   
 }

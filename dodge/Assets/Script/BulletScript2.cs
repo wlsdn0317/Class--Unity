@@ -64,13 +64,6 @@ public class BulletScript2 : MonoBehaviour
         //Destroy함수 : 매개변수로 전달받은 대상을
         //삭제해주는 함수
     }
-    private void OnTriggerStay(Collision collision)
-    {
-
-    }
-    private void OnTriggerExit(Collision collision)
-    {
-
-    }
+   
 
 }
