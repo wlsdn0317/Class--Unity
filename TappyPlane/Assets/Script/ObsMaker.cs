@@ -23,7 +23,7 @@ public class ObsMaker : MonoBehaviour
         {
             obs_timer -= obs_delay;
 
-            float height = Random.Range(-2.0f, -0.9f);
+            float height = Random.Range(-2.0f, -1.5f);
             //생성되는 장애물의 y축 위치는 랜덤으로 결정된다.
 
             Instantiate(down_obs,new Vector3(8,height,8),Quaternion.identity);

@@ -25,21 +25,21 @@ public class PlayerScr : MonoBehaviour
     //변수명이 아닌 자료형 뒤에 붙는다.
     //배열의 크기역시 선언할때는 넣어주지 않는다.
     //배열의 크기는 배열이 초기화될때 결정이 된다.
-    
 
+    public GameObject[] god_object;
 
     void Start()
     {
         g_Velocity = 0;
         rb = this.GetComponent<Rigidbody2D>();
         hittable = true;
-        
+
     }
 
-    
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
             //마우스 키는 마우스에 따라서 갯수에 차이가 나기 때문에
             //키보드처럼 Keycode를 사용하지 않고
@@ -47,15 +47,17 @@ public class PlayerScr : MonoBehaviour
             //0:왼쪽, 1:오른쪽, 2:휠클릭
 
 
-            rb.AddForce(Vector2.up *2,ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * 2.8f, ForceMode2D.Impulse);
             //위쪽방향으로 힘을 가한다.
-            
+
             //AddForce에 매개변수를 추가로 넣을 수 있으며
             //해당 매개변수는 어떤방식으로 가할지를 나타낸다.
             //ForeceMode.Impulse는 순간적으로 강한 힘을 가하며
             //ForceMode.Force는 힘을 전체에 고루 퍼뜨리는 방식이다.
             //Impulce는 보통 게임에서 점프를 구현할 때 사용하며
             //Force는 캐릭터를 이동시킬때 사용한다.
+
+
         }
     }
 
@@ -85,14 +87,14 @@ public class PlayerScr : MonoBehaviour
 
     IEnumerator isHit()
     {
-        
+
 
         if (hittable == true)//플레이가 때릴 수 있는 상태면
         {
             hp--;
             //장애물과 충동했으므로 체력을 1 감소시킨다.
 
-            if(hp <= -1)
+            if (hp <= -1)
             {
                 //체력이 모두 감소하면
                 gm.gameOverFunc();
@@ -137,9 +139,20 @@ public class PlayerScr : MonoBehaviour
             hpImage[hp].SetActive(false);
         }
     }
-    
 
-
-
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "G")
+        {
+            god_object[0].SetActive(true);
+        }
+        if (collision.tag == "O")
+        {
+            god_object[1].SetActive(true);
+        }
+        if (collision.tag == "D")
+        {
+            god_object[2].SetActive(true);
+        }
+    }
 }

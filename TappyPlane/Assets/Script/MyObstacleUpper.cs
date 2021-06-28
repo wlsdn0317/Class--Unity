@@ -21,7 +21,7 @@ public class MyObstacleUpper : MonoBehaviour
             Vector3 resetPos = this.transform.position;
             resetPos.x += 8;
             //오른쪽 화면 밖으로 이동
-            resetPos.y = Random.Range(1, 2.5f);
+            resetPos.y = Random.Range(1.5f, 2.5f);
             //높이를 랜덤하게
             this.transform.position = resetPos;
             //설정된 좌표를 대입
