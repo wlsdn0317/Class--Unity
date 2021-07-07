@@ -11,8 +11,11 @@ public class Player_Hp : MonoBehaviour
     private Player_Scr playerController;
 
     public float MaxHp => maxHP;    //maxHP 변수에 접근할 수 있는 프로퍼티 (Get만 가능)
-    public float CurrentHP => currentHP; //currentHP 변수에 접근할 수 있는 프로퍼티(Get만 가능)
-
+    public float CurrentHP  //currentHP 변수에 접근할 수 있는 프로퍼티(Get만 가능)
+    {
+        set => currentHP = Mathf.Clamp(value, 0, maxHP);
+        get => currentHP;
+    }
     bool hittable;
 
     private void Awake()
@@ -30,10 +33,11 @@ public class Player_Hp : MonoBehaviour
         {
 
             currentHP -= damage;
+            gameObject.GetComponent<Weapon>().AttackLevel--;
 
             hittable = false;
 
-            
+            gameObject.tag = "Invincivility";
             StartCoroutine("HitColorAnimation");
 
             if (currentHP <= 0)
@@ -67,6 +71,8 @@ public class Player_Hp : MonoBehaviour
             //플레이어의 색상을 원래 색상인 하얀색으로
             //(원래색상이 하얀색이 아닐 경우 원래 색상 변수 선언)
         }
+
+        gameObject.tag = "Player";
         hittable = true;
     }
 

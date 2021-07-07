@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 175174725144779153}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 8.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -120,10 +120,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bb60f4745f5ab44fa368e2f29c05c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
+  moveSpeed: 4
   damage: 1
   scorePoint: 200
   explsionPrefab: {fileID: 5969428857418808956, guid: 76052290ec408bf458df5ff3f4175b7e, type: 3}
+  itemPrefabs:
+  - {fileID: 5799235025989816233, guid: bd71d248451629f43975326020e7271b, type: 3}
+  - {fileID: 7019675596971295048, guid: 59dc3406ac32edd4386c7b2f53d07258, type: 3}
 --- !u!114 &-2532697872443819645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,4 +168,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73639f1ed7eb3714faaee82f4f5693f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 3
+  maxHP: 5

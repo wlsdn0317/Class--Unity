@@ -1,0 +1,12 @@
+EventSystem : 입력정보, 레이(레이저)무형 충돌감지
+Rect Transform :UI요소
+
+Screen Space : 미니맵 / 화면전체를 비추어서 물체를옮겨도 위치는 그대로
+World Space : 오브젝트를 따라감
+
+Anchors
+
+
+collider = 충돌체
+
+OnTriggerEnter/Stay/Exit (Collider other) *other : 충돌한물체

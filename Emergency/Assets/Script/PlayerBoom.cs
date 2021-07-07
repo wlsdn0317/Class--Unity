@@ -6,27 +6,33 @@ public class PlayerBoom : MonoBehaviour
 {
     [SerializeField]
     private AnimationCurve curve;
-   
+
     private float boomDelay = 0.5f;
     private Animator animator;
-    
 
 
-    void Start()
+
+    void Awake()
     {
         animator = GetComponent<Animator>();
 
         StartCoroutine("MoveToCenter");
     }
 
-   private IEnumerator MoveToCenter()
+    private void Update()
+    {
+
+
+    }
+
+    private IEnumerator MoveToCenter()
     {
         Vector3 startPositon = transform.position;
-        Vector3 endPosition = Vector3.zero;
+        Vector3 endPosition = Vector3.up;
         float current = 0;
         float percent = 0;
 
-        while(percent < 1)
+        while (percent < 1)
         {
             current += Time.deltaTime;
             percent = current / boomDelay;
@@ -43,19 +49,27 @@ public class PlayerBoom : MonoBehaviour
     }
     public void OnBoom()
     {
+
         //현재 게임 내에서 "Enemy" 태그를 가진 모든 오브젝트 정보를 가져온다.
         GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject[] benemys = GameObject.FindGameObjectsWithTag("BEnemy");
-
+        GameObject[] bullts = GameObject.FindGameObjectsWithTag("Bullet");
         //모든적 파괴
-        for (int i = 0; i < enemys.Length; i++)
+        for (int i = 0; i < enemys.Length; ++i)
         {
             enemys[i].GetComponent<Enemy_Scr>().OnDie();
+
         }
-        for (int i = 0; i < benemys.Length; i++)
+        for (int i = 0; i < benemys.Length; ++i)
         {
             benemys[i].GetComponent<BEnemy_Scr>().OnDie();
+            
         }
+        for(int i = 0; i < bullts.Length; ++i)
+        {
+            bullts[i].GetComponent<Enemy_Bullet>().OnDie();
+        }
+
 
         Destroy(this.gameObject);
     }

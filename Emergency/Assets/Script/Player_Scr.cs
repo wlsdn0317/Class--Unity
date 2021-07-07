@@ -23,10 +23,6 @@ public class Player_Scr : MonoBehaviour
         get => score;
     }
 
-
-
-
-
     bool hitaable;       //플레이어를 공격할 수 있는 상태인지
     
     public int moveSpeed = 3;

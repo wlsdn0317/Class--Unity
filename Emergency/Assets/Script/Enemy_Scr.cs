@@ -14,7 +14,13 @@ public class Enemy_Scr : MonoBehaviour
     private int scorePoint = 100; //적 처치시 획득 점수
     [SerializeField]
     private GameObject explsionPrefab;
+
+    [SerializeField]
+    private GameObject[] itemPrefabs;   //적이 죽었을 때 획득 가능한 아이템
+
     private Player_Scr playerController; //플레이어의 점수(Score) 정보에 접근하기 위해
+
+    
 
 
     private void Awake()
@@ -22,7 +28,7 @@ public class Enemy_Scr : MonoBehaviour
         //Tip. 현재 코드에서는 한번만 호출하기 때문에 OnDie()에서 바로 호출해도 되지만
         //오브젝트 풀링을 이용해 오브젝트를 재사용할 경우에는 최초 1번만 Find를 이용해
         //PlayerController의 정보를 저장해두고 사용하는 것이 연산에 효율 적이다.
-        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Scr>();
+        playerController = GameObject.Find("Player").GetComponent<Player_Scr>();
     }
 
     void Start()
@@ -34,7 +40,9 @@ public class Enemy_Scr : MonoBehaviour
         //방향: 목표물 위치 - 현재위치
         dir.z = 0;
         dir = dir.normalized;
-       
+
+        
+        
     }                         
 
     void Update()
@@ -59,7 +67,27 @@ public class Enemy_Scr : MonoBehaviour
 
         Instantiate(explsionPrefab, transform.position, Quaternion.identity);
 
+        //일정 확률로 아이템 생성
+        SpawnItem();
+
         //적 오브젝트 제거
         Destroy(this.gameObject);
     }
+
+    private void SpawnItem()
+    {
+        int spawnItem = Random.Range(0, 100);
+        if(spawnItem < 10)
+        {
+            GameObject item01 =Instantiate(itemPrefabs[0], transform.position, Quaternion.identity);
+            Destroy(item01,4.0f);
+        }
+        if (spawnItem >=15 && spawnItem < 30)
+        {
+            GameObject item02 =Instantiate(itemPrefabs[1], transform.position, Quaternion.identity);
+            Destroy(item02, 4.0f);
+        }
+    }
+
+
 }
