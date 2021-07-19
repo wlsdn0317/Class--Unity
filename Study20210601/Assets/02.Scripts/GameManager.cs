@@ -24,6 +24,31 @@ public class GameManager : MonoBehaviour
     //List는 일반적인 배열과 달리 안의 내용물에 맞춰 길이가 변함
     public List<GameObject> bulletPool = new List<GameObject>();
 
+    bool isPaused;
+    public void OnPauseClick()
+    {
+        //bool 값을 스왑할 때 아래와 같이 사용도 가능
+        isPaused = !isPaused;
+
+        //삼항 연산자 >> 조건식 ? 참 : 거짓
+        //timeScale은 1인 보통 1보다 작으면 느려지다가 0이되면 일시정지
+        //1보다 커지면 배속 통상적으로 4배속 이상 권장안함
+        Time.timeScale = (isPaused) ? 0f : 1f;
+
+        var PlayerObj = GameObject.FindGameObjectWithTag("PLAYER");
+        //MonoBehaviour를 넣은 이유는 플레이어에 추가된
+        //모든 스크립트를 가져오기 위해서
+        var scripts = PlayerObj.GetComponents<MonoBehaviour>();
+        foreach(var script in scripts)
+        {
+            //스크립트 전부다 비활성화 또는 활성화 하도록
+            script.enabled = !isPaused;
+        }
+
+        var canvasGroup = GameObject.Find("Panel-Weapon").GetComponent<CanvasGroup>();
+        canvasGroup.blocksRaycasts = !isPaused;
+    }
+
     private void Awake()
     {
         //싱글턴이 존재 하지 않을 경우

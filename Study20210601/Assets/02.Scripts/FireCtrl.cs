@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 //struct = 구조체, 클래스 열화판으로 생각하면 편함
 //클래스는 구조체 이후 등장한 개념
@@ -43,6 +44,15 @@ public class FireCtrl : MonoBehaviour
     public float reloadTime = 2f;
     bool isReloading = false;
 
+    public Sprite[] weaponIcons;//변경할 무기 이미지
+    public Image weaponImage;//교체할 무기 이미지 UI
+
+    public void OnChangeWeapon()
+    {
+        currWeapon++;
+        currWeapon = (WeaponType)((int)currWeapon % 2);
+        weaponImage.sprite = weaponIcons[(int)currWeapon];
+    }
     void Start()
     {
         muzzleFlash = firePos.GetComponentInChildren<ParticleSystem>();
@@ -52,6 +62,14 @@ public class FireCtrl : MonoBehaviour
 
     void Update()
     {
+        //IsPointerOverGameObject 함수는 UI가 클릭되면
+        //True값을 반환하는 놈
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
+
         //0이면 좌클릭 1이면 우클릭
         //GetMouseButtonDown 함수는 눌렀을 때 1번만 동작
         if (!isReloading && Input.GetMouseButtonDown(0))
