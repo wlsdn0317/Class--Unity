@@ -25,6 +25,18 @@ public class GameManager : MonoBehaviour
     public List<GameObject> bulletPool = new List<GameObject>();
 
     bool isPaused;
+
+    public CanvasGroup inventoryCG;
+
+    public void OnInventoryOpen(bool isOpened)
+    {
+        //isOpened 값이 참일 경우 1아니면 0 값이 설정됨
+        inventoryCG.alpha = (isOpened) ? 1f : 0f;
+        //interactable 상호작용 - 투명인간
+        //blocksRaycasts - 없는것
+        inventoryCG.interactable = isOpened;
+        inventoryCG.blocksRaycasts = isOpened;
+    }
     public void OnPauseClick()
     {
         //bool 값을 스왑할 때 아래와 같이 사용도 가능
@@ -48,6 +60,7 @@ public class GameManager : MonoBehaviour
         var canvasGroup = GameObject.Find("Panel-Weapon").GetComponent<CanvasGroup>();
         canvasGroup.blocksRaycasts = !isPaused;
     }
+
 
     private void Awake()
     {
