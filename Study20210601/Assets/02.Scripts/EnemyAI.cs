@@ -34,6 +34,8 @@ public class EnemyAI : MonoBehaviour
     readonly int hashWalkSpeed = Animator.StringToHash("WalkSpeed");
     readonly int hashPlayerDie = Animator.StringToHash("PlayerDie");
 
+    EnemyFOV enemyFOV;
+
     void Awake()
     {
         var player = GameObject.FindGameObjectWithTag("PLAYER");
@@ -45,6 +47,7 @@ public class EnemyAI : MonoBehaviour
         moveAgent = GetComponent<MoveAgent>();
         animator = GetComponent<Animator>();
         enemyFire = GetComponent<EnemyFire>();
+        enemyFOV = GetComponent<EnemyFOV>();
 
         //시간 지연 변수를 0.3 값으로 설정
         //시간 지연 변수는 코루틴 함수에서 사용됨
@@ -54,6 +57,7 @@ public class EnemyAI : MonoBehaviour
         //속도도 조금씩 다르게 만들어줌
         animator.SetFloat(hashOffset, Random.Range(0f, 1f));
         animator.SetFloat(hashWalkSpeed, Random.Range(1f, 1.2f));
+
     }
 
     private void OnEnable()
@@ -77,6 +81,9 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator CheckState()//상태체크 코루틴 함수
     {
+        //기타 오브젝트의 스크립트 초기화를 위한 대기시간
+        yield return new WaitForSeconds(1f);
+
         while(!isDie) //적이 살아있는동안 계속 실행되도록 while사용
         {
             if (state == State.DIE)
@@ -86,9 +93,15 @@ public class EnemyAI : MonoBehaviour
 
             if (dist <= attackDist)//공격 사거리 이내면 공격으로 변경
             {
-                state = State.ATTACK;
+                if (enemyFOV.isViewPlayer())
+                {
+                    state = State.ATTACK; //장애물 없으면 공격
+                }
+                else
+                    state = State.TRACE; //장애물 있으면 추적
             }
-            else if(dist <= traceDist)//추적 사거리 이내면 추적으로 변경
+            //추적 반경 및 시야각 안에 들어올 경우 추적
+            else if (enemyFOV.isTracePlayer())
             {
                 state = State.TRACE;
             }

@@ -47,6 +47,15 @@ public class FireCtrl : MonoBehaviour
     public Sprite[] weaponIcons;//변경할 무기 이미지
     public Image weaponImage;//교체할 무기 이미지 UI
 
+    //자동 공격을 위한 변수 선언
+    int enemyLayer;
+    int obstacleLayer;
+    int layerMask; //여러 레이어를 병합하여 사용할 레이어 마스크
+
+    bool isFire = false;
+    float nextFire;
+    public float fireRate = 0.1f;
+
     public void OnChangeWeapon()
     {
         currWeapon++;
@@ -58,17 +67,49 @@ public class FireCtrl : MonoBehaviour
         muzzleFlash = firePos.GetComponentInChildren<ParticleSystem>();
         _audio = GetComponent<AudioSource>();
         shake = GameObject.Find("CameraRig").GetComponent<Shake>();
+        //레이어의 이름을 통하여 레이어값 미리 설정
+        enemyLayer = LayerMask.NameToLayer("ENEMY");
+        obstacleLayer = LayerMask.NameToLayer("OBSTACLE");
+        //100 | 001 = 101
+        //or연산은 둘 다 0이 아닌 경우에 1로 처리함
+        layerMask = 1 << enemyLayer | 1 << obstacleLayer;
     }
 
     void Update()
     {
+
+        Debug.DrawLine(firePos.position, firePos.forward * 20f, Color.green);
         //IsPointerOverGameObject 함수는 UI가 클릭되면
         //True값을 반환하는 놈
         if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
         }
-
+        //자동공격
+        RaycastHit hit;
+        if (Physics.Raycast(firePos.position,firePos.forward,out hit,30f,layerMask))
+        {
+            //감지한 LayerMask 중에서 태그가 ENEMY인 경우만 공격
+            
+                isFire = (hit.collider.CompareTag("ENEMY"));
+        }
+        else
+        {
+            isFire = false;
+        }
+        if(!isReloading && isFire)
+        {
+            if(Time.time > nextFire)
+            {
+                remainingBullet--;
+                Fire();
+                if(remainingBullet == 0)
+                {
+                    StartCoroutine(Reloading());
+                }
+                nextFire = Time.time + fireRate;
+            }
+        }
 
         //0이면 좌클릭 1이면 우클릭
         //GetMouseButtonDown 함수는 눌렀을 때 1번만 동작
