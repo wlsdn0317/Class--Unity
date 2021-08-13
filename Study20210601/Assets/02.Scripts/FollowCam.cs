@@ -12,9 +12,29 @@ public class FollowCam : MonoBehaviour
     public float targetOffset = 2f;//추적 좌표의 오프셋
 
     Transform tr;
+
+    [Header("벽 장애물 설정")]
+    public float heightAboveWall = 7f;
+    public float colliderRadius = 1.8f;
+    public float overDamping = 5f;
+    public float originHeight;
     void Start()
     {
         tr = GetComponent<Transform>();
+        originHeight = height;
+    }
+
+    private void Update()
+    {
+        //구체 형태의 충돌체로 충돌 유무 검사
+        if (Physics.CheckSphere(tr.position, colliderRadius))
+        {
+            height = Mathf.Lerp(height, heightAboveWall, Time.deltaTime * overDamping);
+        }
+        else
+        {
+            height = Mathf.Lerp(height, originHeight, Time.deltaTime * overDamping);
+        }
     }
 
     //콜백함수 - 호출을 따로하지 않아도 알아서 작동하는 함수
@@ -46,5 +66,9 @@ public class FollowCam : MonoBehaviour
         //출발과 도착지점 사이에 선을 그림
         Gizmos.DrawLine(target.position + (target.up * targetOffset),
                                      transform.position);
+
+        //카메라 감사고 있는 충돌체 표시하기 위한 기즈모
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, colliderRadius);
     }
 }

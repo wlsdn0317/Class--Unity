@@ -59,6 +59,11 @@ public class EnemyDamage : MonoBehaviour
                 //상태 변환 해줌
                 GetComponent<EnemyAI>().state = EnemyAI.State.DIE;
                 hpBarImage.GetComponentsInParent<Image>()[1].color = Color.clear;
+
+                //싱글턴 패널을 활용하여 적이 죽었을 때 스코어 증가
+                GameManager.instance.IncKillCount();
+                //죽은 애니메이션 이후 남아있는 콜라이더 비활성화
+                GetComponent<CapsuleCollider>().enabled = false;
             }
         }
     }
