@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2020.3/staging' branch; Version is '2020.3.13f1 (71691879b7f5) revision 7432472'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Pro; OS build 19042.1110; Version 2009; 64bit' Language: 'ko' Physical Memory: 8146 MB
+OS: 'Windows 10 Pro; OS build 19042.1165; Version 2009; 64bit' Language: 'ko' Physical Memory: 8146 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
@@ -15,11 +15,11 @@ C:/Users/admin/Documents/GitHub/Class--Unity/Study20210601
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-59784
+55845
 Successfully changed project path to: C:/Users/admin/Documents/GitHub/Class--Unity/Study20210601
 C:/Users/admin/Documents/GitHub/Class--Unity/Study20210601
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 38.40 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 44.14 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.13f1 (71691879b7f5)
 [Subsystems] Discovering subsystems at path C:/Users/admin/Downloads/2020.3.13f1/Editor/Data/Resources/UnitySubsystems
@@ -35,37 +35,37 @@ Initialize mono
 Mono path[0] = 'C:/Users/admin/Downloads/2020.3.13f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Users/admin/Downloads/2020.3.13f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Users/admin/Downloads/2020.3.13f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56844
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56916
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Users/admin/Downloads/2020.3.13f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001874 seconds.
+Registered in 0.002533 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 36.02 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 39.53 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.896 seconds
+- Completed reload, in  3.748 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.004672 seconds.
+Registered in 0.013585 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.81 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.37 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.071 seconds
+- Completed reload, in  1.114 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 0.45 ms, found 2 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Refreshing native plugins compatible for Editor in 0.36 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1576 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 81.1 MB.
-System memory in use after: 81.2 MB.
+System memory in use before: 81.2 MB.
+System memory in use after: 81.3 MB.
 
 Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 2022.
-Total: 2.573800 ms (FindLiveObjects: 0.184700 ms CreateObjectMapping: 0.078000 ms MarkObjects: 2.161400 ms  DeleteObjects: 0.148500 ms)
+Total: 2.108500 ms (FindLiveObjects: 0.148800 ms CreateObjectMapping: 0.045100 ms MarkObjects: 1.752300 ms  DeleteObjects: 0.161300 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -79,33 +79,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/02.Scripts/UIManager.cs
-  artifactKey: Guid(92bbbd6c84ecc33489879e8ae9d844b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/02.Scripts/UIManager.cs using Guid(92bbbd6c84ecc33489879e8ae9d844b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '041257e3dd8f8ee23d7a8fbd7e6f5c89') in 0.035179 seconds 
-  Import took 0.039667 seconds .
+  path: Assets/07.Animations/Controllers/EnemyAnim.controller
+  artifactKey: Guid(f84d9a5fcda83c6419048fabfe3e2804) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/07.Animations/Controllers/EnemyAnim.controller using Guid(f84d9a5fcda83c6419048fabfe3e2804) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d660398ba992705c14c9b937bbe8c08') in 0.072725 seconds 
+  Import took 0.077874 seconds .
 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000254 seconds.
-  path: Assets/02.Scripts/Test.cs
-  artifactKey: Guid(bce5caf31022380458a3548443b19058) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/02.Scripts/Test.cs using Guid(bce5caf31022380458a3548443b19058) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0aa4312acc071fc8c8ae437c16cd116') in 0.014328 seconds 
-  Import took 0.018699 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 154.693609 seconds.
-  path: Assets/02.Scripts/EnemyFire.cs
-  artifactKey: Guid(ad134e1a91a247749adaa0ddf89df676) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/02.Scripts/EnemyFire.cs using Guid(ad134e1a91a247749adaa0ddf89df676) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32794256f2ec22dcf48092d8da893770') in 0.020966 seconds 
-  Import took 0.027498 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.018194 seconds.
-  path: Assets/02.Scripts/EnemyFire.cs
-  artifactKey: Guid(ad134e1a91a247749adaa0ddf89df676) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/02.Scripts/EnemyFire.cs using Guid(ad134e1a91a247749adaa0ddf89df676) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32794256f2ec22dcf48092d8da893770') in 0.022967 seconds 
-  Import took 0.026789 seconds .
-
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file
