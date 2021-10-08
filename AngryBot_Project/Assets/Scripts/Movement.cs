@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+using Cinemachine;
 
-public class Movement : MonoBehaviour
+public class Movement : MonoBehaviourPunCallbacks
 {
     CharacterController controller;
     Transform transform;
@@ -15,12 +18,26 @@ public class Movement : MonoBehaviour
 
     public float moveSpeed = 10f;
 
+    PhotonView pv; //포톤뷰 컴포넌트 캐시 처리위한 변수
+    CinemachineVirtualCamera virtualCamera;
+
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
         transform = GetComponent<Transform>();
         animator = GetComponent<Animator>();
         camera = Camera.main;
+
+        pv = GetComponent<PhotonView>();
+        virtualCamera = GameObject.FindObjectOfType<CinemachineVirtualCamera>();
+
+        if (pv.IsMine) //내것인지 남것인지 판단
+        {
+            //내거에 카메라 초점을 맞차라
+            virtualCamera.Follow = transform;
+            virtualCamera.LookAt = transform;
+        }
 
         //가상의 바닥을 플레이어의 위치를 기준으로 생성
         plane = new Plane(transform.up, transform.position);
@@ -64,7 +81,10 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-        Turn();
+        if (pv.IsMine) //내것인지 남것인지 판단
+        {
+            Move();
+            Turn();
+        }
     }
 }
