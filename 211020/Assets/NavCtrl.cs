@@ -23,7 +23,7 @@ public class NavCtrl : MonoBehaviour
         //강제로 변경해야하는 경우가 있다면
         //오브젝트의 좌표를 변경하지 않고(position = 좌표는 사용하지 않는다.)
         //에이전트의 좌표를 변경한다.
-        agent.Warp(Vector3.zero);
+        //agent.Warp(Vector3.zero);
         //에이전트의 좌표를 강제로 변경할때는
         //warp함수를 사용한다.
     }
